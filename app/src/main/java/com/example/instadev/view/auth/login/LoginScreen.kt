@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instadev.R
@@ -45,7 +46,7 @@ import com.example.instadev.view.core.components.InstaText
 @Preview
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel = viewModel(),
+    loginViewModel: LoginViewModel = hiltViewModel(),
     onCreateAccountClick: () -> Unit = {}
 ) {
 //    var email: String by remember { mutableStateOf("") }
@@ -94,7 +95,7 @@ fun LoginScreen(
             Spacer(Modifier.height(12.dp))
             InstaButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {},
+                onClick = { loginViewModel.onClickSelected()},
                 enabled = uiState.isLoginEnabled,
                 text = "Iniciar Sesión"
             )
